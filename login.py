@@ -1,7 +1,28 @@
+#!/usr/bin/env python3
+import platform    
+import subprocess  
 import getpass
 import requests
 from bs4 import BeautifulSoup
 import json
+
+
+def ping(host):
+    """
+    Returns True if host responds to a ping request
+    """
+    import subprocess
+    import platform
+
+    # Ping parameters as function of OS
+    ping_str = "-n 1" if platform.system().lower() == "windows" else "-c 1"
+    args = "ping " + " " + ping_str + " " + host
+    need_sh = False if platform.system().lower() == "windows" else True
+
+    # Ping
+    return subprocess.call(args, shell=need_sh) == 0
+
+
 try:
     with open("config.json") as json_data_files:
         json_data = json.load(json_data_files)
@@ -36,9 +57,8 @@ data["lt"] = lt
 
 response = session.post('https://sso.ugm.ac.id/cas/login;jsessionid=07C11FADDB7E2690F6CD1458691CDD7A',
                         headers=headers_2, params=params, cookies=cookies, data=data)
-# print(response.content)
-soup = BeautifulSoup(response.content, "lxml")
-if soup.find_all("span", {"class": "text-xs"}):
+
+if ping("8.8.8.8") == True:
     print("Login Success")
 else:
-    print("Login failure")
+    print("Login Failure")
