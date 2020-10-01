@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import platform    
-import subprocess  
+import platform
+import subprocess
 import getpass
 import requests
 from bs4 import BeautifulSoup
@@ -28,37 +28,42 @@ try:
         json_data = json.load(json_data_files)
         print("open file success")
     data = json_data["credentials"]
-    headers_2 = json_data["headers_2"]
-    headers_1 = json_data["headers_1"]
+
 except:
     print("open file error")
     pass
-username = name = input("username : ")
-password = getpass.getpass()
-data["username"] = username
-data["password"] = password
 
 
-session = requests.Session()
-response = session.get(
-    'https://internet.ugm.ac.id/sso/login', headers=headers_1)
-cookies = session.cookies.get_dict()
-contents = (response.content)
+def login():
+    username = input("username : ")
+    password = getpass.getpass()
+    session = requests.Session()
+    data["username"] = username
+    data["password"] = password
 
-soup = BeautifulSoup(contents, "lxml")
-lt = soup.find("input", {'name': "lt"}).attrs['value']
+    response = session.get(
+        'https://internet.ugm.ac.id/sso/login')
+    contents = (response.content)
+
+    soup = BeautifulSoup(contents, "lxml")
+    lt = soup.find("input", {'name': "lt"}).attrs['value']
+
+    params = (
+        ('service', 'https://internet.ugm.ac.id/sso/login'),
+    )
+    data["lt"] = lt
+
+    response = session.post('https://sso.ugm.ac.id/cas/login',
+                            params=params, data=data)
+
+    if ping("10.13.10.13") == True:
+        return True
+    else:
+        return False
 
 
-params = (
-    ('service', 'https://internet.ugm.ac.id/sso/login'),
-)
-data["lt"] = lt
-
-
-response = session.post('https://sso.ugm.ac.id/cas/login;jsessionid=07C11FADDB7E2690F6CD1458691CDD7A',
-                        headers=headers_2, params=params, cookies=cookies, data=data)
-
-if ping("8.8.8.8") == True:
-    print("Login Success")
-else:
-    print("Login Failure")
+if __name__ == "__main__":
+    if(login()):
+        print("Login Success")
+    else:
+        print("Login Failure")
