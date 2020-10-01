@@ -1,40 +1,9 @@
-  {
-
-      "credentials": {
-          "username": "",
-          "password": "",
-          "lt": "k",
-          "_eventId": "submit",
-          "submit": "LOGIN"
-      },
-      "headers_1": {
-
-          "Connection": "keep-alive",
-          "Upgrade-Insecure-Requests": "1",
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-          "Sec-Fetch-User": "?1",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-          "Sec-Fetch-Site": "same-origin",
-          "Sec-Fetch-Mode": "navigate",
-          "Referer": "https://internet.ugm.ac.id/",
-          "Accept-Encoding": "gzip, deflate, br",
-          "Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"
-      },
-      "headers_2": {
-          "Connection": "keep-alive",
-          "Cache-Control": "max-age=0",
-          "Origin": "https://sso.ugm.ac.id",
-          "Upgrade-Insecure-Requests": "1",
-          "Content-Type": "application/x-www-form-urlencoded",
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
-          "Sec-Fetch-User": "?1",
-          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-          "Sec-Fetch-Site": "same-origin",
-          "Sec-Fetch-Mode": "navigate",
-          "Referer": "https://sso.ugm.ac.id/cas/login?service=https%3A%2F%2Finternet.ugm.ac.id%2Fsso%2Flogin",
-          "Accept-Encoding": "gzip, deflate, br",
-          "Accept-Language": "en-US,en;q=0.9,id-ID;q=0.8,id;q=0.7"
-
-      }
-
+{
+  "credentials": {
+    "username": "",
+    "password": "",
+    "lt": "k",
+    "_eventId": "submit",
+    "submit": "LOGIN"
   }
+}
